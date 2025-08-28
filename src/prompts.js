@@ -93,3 +93,30 @@ export function createThemePrompt_MultiShot(storyText) {
     Theme:
   `;
 }
+
+
+/**
+ * @file Manages all prompt templates for the Narrator project.
+ */
+
+// ... (systemPrompt remains the same) ...
+
+/**
+ * DYNAMIC PROMPT: Creates a user-facing prompt that changes based on genre.
+ * @param {string} character - The main character of the story.
+ * @param {string} setting - The setting of the story.
+ * @param {string} genre - The genre of the story.
+ * @returns {string} The formatted dynamic user prompt.
+ */
+export function createDynamicUserPrompt(character, setting, genre) {
+  let prompt = `Write a short ${genre} story about ${character} in ${setting}.`;
+
+  // Dynamically add a specific instruction based on the genre
+  if (genre.toLowerCase() === 'fantasy') {
+    prompt += " The story must include a magical element.";
+  } else if (genre.toLowerCase() === 'sci-fi') {
+    prompt += " The story must include a piece of futuristic technology.";
+  }
+
+  return prompt;
+}
