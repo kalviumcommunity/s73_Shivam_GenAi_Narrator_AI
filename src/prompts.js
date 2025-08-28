@@ -120,3 +120,46 @@ export function createDynamicUserPrompt(character, setting, genre) {
 
   return prompt;
 }
+
+/**
+ * @file Manages all prompt templates for the Narrator project.
+ */
+
+// ... (systemPrompt remains the same) ...
+
+/**
+ * CHAIN-OF-THOUGHT PROMPT: Guides the AI to outline a plot before writing the story.
+ * @param {string} character - The main character of the story.
+ * @param {string} setting - The setting of the story.
+ * @param {string} genre - The genre of the story.
+ * @returns {string} The formatted Chain-of-Thought prompt.
+ */
+export function createStoryPrompt_CoT(character, setting, genre) {
+  return `
+    Your task is to write a short story. First, think step-by-step to outline the plot with a Beginning, a Middle, and an End. After the outline, write the complete story.
+
+    ---
+    EXAMPLE
+    Inputs:
+    * Character: A brave knight named Sir Kael
+    * Setting: An enchanted forest
+    * Genre: Fantasy
+
+    Chain of Thought:
+    * Beginning: Sir Kael, a brave knight, enters the enchanted forest with the goal of finding the legendary Sunstone.
+    * Middle: He faces a challenge: a group of mischievous sprites try to lead him astray with illusions.
+    * End: He sees through the illusions, finds the Sunstone, and emerges from the forest victorious.
+
+    Story:
+    Sir Kael pushed aside a thick, glowing vine, his armor shimmering in the eerie light of the enchanted forest... (full story text here)
+    ---
+
+    TASK
+    Inputs:
+    * Character: "${character}"
+    * Setting: "${setting}"
+    * Genre: "${genre}"
+
+    Chain of Thought:
+  `;
+}
