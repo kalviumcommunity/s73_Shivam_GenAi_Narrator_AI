@@ -35,3 +35,30 @@ export function createAnalysisPrompt_ZeroShot(storyText) {
     "${storyText}"
   `;
 }
+
+/**
+ * @file Manages all prompt templates for the Narrator project.
+ */
+
+// ... (systemPrompt and createUserPrompt remain the same) ...
+
+/**
+ * ONE-SHOT PROMPT: Generates a creative title by showing one example.
+ * @param {string} storyText - The new story needing a title.
+ * @returns {string} The formatted one-shot prompt.
+ */
+export function createTitlePrompt_OneShot(storyText) {
+  return `
+    Based on the story, create a creative, two-word title.
+
+    ---
+    EXAMPLE
+    Story: A curious robot named Bolt searched a Martian junkyard for a missing power converter. He followed strange, three-toed footprints to a small cave, where he found a furry Martian creature hoarding the shiny parts to decorate its nest.
+    Title: The Shiny Nest
+    ---
+
+    TASK
+    Story: "${storyText}"
+    Title:
+  `;
+}
