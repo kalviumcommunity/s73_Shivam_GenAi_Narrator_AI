@@ -62,3 +62,34 @@ export function createTitlePrompt_OneShot(storyText) {
     Title:
   `;
 }
+
+/**
+ * @file Manages all prompt templates for the Narrator project.
+ */
+
+// ... (systemPrompt and createUserPrompt remain the same) ...
+
+/**
+ * MULTI-SHOT PROMPT: Identifies a story's theme by showing multiple examples.
+ * @param {string} storyText - The new story needing a theme.
+ * @returns {string} The formatted multi-shot prompt.
+ */
+export function createThemePrompt_MultiShot(storyText) {
+  return `
+    Analyze the story and identify its primary theme in one or two words.
+
+    ---
+    EXAMPLE 1
+    Story: A curious robot named Bolt searched a Martian junkyard for a missing power converter. He followed strange footprints to a cave, where he found a small Martian creature hoarding the shiny parts to decorate its nest.
+    Theme: Unexpected Discovery
+    ---
+    EXAMPLE 2
+    Story: A brave knight named Sir Kael ventured into an enchanted forest to find the legendary Sunstone. He overcame magical traps and mischievous sprites, proving his courage and determination were his greatest assets.
+    Theme: Courage and Perseverance
+    ---
+
+    TASK
+    Story: "${storyText}"
+    Theme:
+  `;
+}
